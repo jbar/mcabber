@@ -292,7 +292,7 @@ int checkset_perm(const char *name, unsigned int setmode)
       }
       scr_LogPrint(LPRINT_LOGNORM, "Permissions have been corrected");
     } else {
-      scr_LogPrint(LPRINT_LOGNORM, "WARNING: Bad permissions [%s]", name);
+      scr_LogPrint(LPRINT_LOGNORM, "WARNING: Bad permissions [%s] (expect \"og-rwx\")", name);
       return 1;
     }
   }
@@ -320,6 +320,37 @@ const char *ut_get_tmpdir(void)
   // Default temporary directory
   tmpdir = "/tmp";
   return tmpdir;
+}
+
+/*! Check the dirname of a file path, and create missing directories if needed
+ * \return like mkdir : 0 on succes, -1 on error (cf. errno) */
+int mk_path(const char * path) {
+	char * cp , * dir=strdup(path);
+	struct stat std;
+
+	if (!dir)
+		return(-1);
+
+  cp=dir;
+
+  while (*cp == '/')
+		cp++;
+
+	cp=strchr(cp,'/');
+	while (cp) {
+		*cp='\0';
+		if ( stat(dir,&std) < 0 && mkdir(dir,0755) < 0) {
+		/* If the path does not exist and we fail to create it */
+			free(dir);
+			return -1;
+		}
+		*cp='/';
+    //while (*cp == '/') /* Usefull ?? depend how stat manage mutiple ///// ... */
+		cp++;
+		cp=strchr(cp,'/');
+	}
+	free(dir);
+	return 0;
 }
 
 //  to_iso8601(dststr, timestamp)

@@ -5,6 +5,13 @@
 
 #include <mcabber/xmpp.h>
 
+enum {
+    LOG_SAMPLING_NONE = 0,
+    LOG_SAMPLING_YEAR,
+    LOG_SAMPLING_MONTH,
+    LOG_SAMPLING_DAY,
+};
+
 void hlog_enable(guint enable, const char *root_dir, guint loadfile);
 char *hlog_get_log_jid(const char *bjid);
 void hlog_read_history(const char *bjid, GList **p_buddyhbuf, guint width);

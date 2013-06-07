@@ -3,6 +3,8 @@
 
 extern GMainContext *main_context;
 
+extern int log_sampling;
+
 void mcabber_set_terminate_ui(void);
 char *mcabber_version(void);
 

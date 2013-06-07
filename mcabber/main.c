@@ -64,6 +64,7 @@
 
 static unsigned int terminate_ui;
 GMainContext *main_context;
+int log_sampling=LOG_SAMPLING_NONE;
 
 static struct termios *backup_termios;
 
@@ -432,8 +433,17 @@ int main(int argc, char **argv)
 
   optval   = (settings_opt_get_int("logging") > 0);
   optval2  = (settings_opt_get_int("load_logs") > 0);
-  if (optval || optval2)
+  if (optval || optval2) {
     hlog_enable(optval, settings_opt_get("logging_dir"), optval2);
+    if (settings_opt_get("logging_sampling")) {
+      if (!strcasecmp(settings_opt_get("logging_sampling"),"year"))
+        log_sampling=LOG_SAMPLING_YEAR;
+      else if (!strcasecmp(settings_opt_get("logging_sampling"),"month"))
+        log_sampling=LOG_SAMPLING_MONTH;
+      else if (!strcasecmp(settings_opt_get("logging_sampling"),"day"))
+        log_sampling=LOG_SAMPLING_DAY;
+    }
+  }
 
 #if defined(WITH_ENCHANT) || defined(WITH_ASPELL)
   /* Initialize spelling */

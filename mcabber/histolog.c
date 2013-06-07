@@ -37,19 +37,22 @@
 #include "utils.h"
 #include "roster.h"
 #include "xmpp.h"
+#include "main.h"
 
 static guint UseFileLogging;
 static guint FileLoadLogs;
 static char *RootDir;
 
 
-//  user_histo_file(jid)
-// Returns history filename for the given jid
+//  user_histo_file(jid, timestamp)
+// Returns history filename for the given jid at a given time.
 // Note: the caller *must* free the filename after use (if not null).
-static char *user_histo_file(const char *bjid)
+static char *user_histo_file(const char *bjid, time_t timestamp)
 {
   char *filename;
   char *lowerid;
+  time_t ts;
+  struct tm *tm_time;
 
   if (!(UseFileLogging || FileLoadLogs))
     return NULL;
@@ -63,7 +66,29 @@ static char *user_histo_file(const char *bjid)
     return NULL;
   mc_strtolower(lowerid);
 
-  filename = g_strdup_printf("%s%s", RootDir, lowerid);
+  if (log_sampling != LOG_SAMPLING_NONE ) {
+    // If timestamp is null, get current date
+    if (timestamp)
+      ts = timestamp;
+    else
+      time(&ts);
+    tm_time = gmtime(&ts);
+  }
+
+  switch (log_sampling) {
+    case LOG_SAMPLING_YEAR:
+        filename = g_strdup_printf("%s_%s_/%.4d.txt", RootDir, lowerid, (int)(1900+tm_time->tm_year));
+        break;
+    case LOG_SAMPLING_MONTH:
+        filename = g_strdup_printf("%s_%s_/%.4d/%02d.txt", RootDir, lowerid, (int)(1900+tm_time->tm_year),tm_time->tm_mon+1);
+        break;
+    case LOG_SAMPLING_DAY:
+        filename = g_strdup_printf("%s_%s_/%.4d/%02d/%02d.txt", RootDir, lowerid, (int)(1900+tm_time->tm_year),tm_time->tm_mon+1,tm_time->tm_mday);
+        break;
+    default:
+        filename = g_strdup_printf("%s%s", RootDir, lowerid);
+  }
+
   g_free(lowerid);
   return filename;
 }
@@ -74,7 +99,7 @@ char *hlog_get_log_jid(const char *bjid)
   char *path;
   char *log_jid = NULL;
 
-  path = user_histo_file(bjid);
+  path = user_histo_file(bjid,(time_t) NULL);
   while (path) {
     if (lstat(path, &bufstat) != 0)
       break;
@@ -83,7 +108,7 @@ char *hlog_get_log_jid(const char *bjid)
       log_jid = g_new0(char, bufstat.st_size+1);
       if (readlink(path, log_jid, bufstat.st_size) < 0) return NULL;
       g_free(path);
-      path = user_histo_file(log_jid);
+      path = user_histo_file(log_jid,(time_t) NULL);
     } else
       break;
   }
@@ -112,8 +137,6 @@ static void write_histo_line(const char *bjid,
   if (type == 'S' && settings_opt_get_int("logging_ignore_status"))
     return;
 
-  filename = user_histo_file(bjid);
-
   // If timestamp is null, get current date
   if (timestamp)
     ts = timestamp;
@@ -138,6 +161,14 @@ static void write_histo_line(const char *bjid,
    * locally by mcabber.)
    */
 
+  filename = user_histo_file(bjid,ts);
+
+  if (mk_path(filename) < 0) {
+    scr_LogPrint(LPRINT_LOGNORM, "Unable to write history "
+                 "(creating %s path: %s)", filename, strerror(errno));
+    return;
+  }
+
   fp = fopen(filename, "a");
   g_free(filename);
   if (!fp) {
@@ -146,7 +177,6 @@ static void write_histo_line(const char *bjid,
     return;
   }
 
-  to_iso8601(str_ts, ts);
   err = fprintf(fp, "%c%c %-18.18s %03d %s\n", type, info, str_ts, len, data);
   fclose(fp);
   if (err < 0) {
@@ -188,7 +218,7 @@ void hlog_read_history(const char *bjid, GList **p_buddyhbuf, guint width)
     return;
   }
 
-  filename = user_histo_file(bjid);
+  filename = user_histo_file(bjid,(time_t) NULL);
 
   fp = fopen(filename, "r");
   g_free(filename);
@@ -382,13 +412,15 @@ void hlog_enable(guint enable, const char *root_dir, guint loadfiles)
       RootDir = g_strdup_printf("%s%s", home, dir);
     }
     // Check directory permissions (should not be readable by group/others)
-    if (checkset_perm(RootDir, TRUE) == -1) {
-      // The directory does not actually exists
-      g_free(RootDir);
-      RootDir = NULL;
-      scr_LogPrint(LPRINT_LOGNORM, "ERROR: Cannot access "
+    if (checkset_perm(RootDir, FALSE) == -1) {
+      // The directory does not actually exists, create it.
+      if ( mk_path(RootDir) < 0 ) {
+        scr_LogPrint(LPRINT_LOGNORM, "ERROR: Cannot access/create "
                    "history log directory, logging DISABLED");
-      UseFileLogging = FileLoadLogs = FALSE;
+        UseFileLogging = FileLoadLogs = FALSE;
+        g_free(RootDir);
+        RootDir = NULL;
+      }
     }
   } else {  // Disable history logging
     g_free(RootDir);

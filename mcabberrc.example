@@ -150,14 +150,21 @@ set cmdhistory_lines = 250
 # If you enable load_logs, you can use the 'max_history_age' setting below.
 # Default logging directory (logging_dir) is $HOME/.mcabber/histo/
 # Defaults for logging, load_logs are 0 (disabled)
-# Note: the logging directory must exist if you enable logging, mcabber
-#       will not create it.
 # Note: these options, except 'max_history_age' and 'max_history_blocks',
 # are used at startup time.
 #set logging = 1
 #set load_logs = 1
 #set logging_dir = ~/.mcabber/histo/
 #set logging_ignore_status = 1
+
+# Set how to split logs by date, possible values:
+# * "none"  : default, no sampling : logs are all in the same file.
+# * "year"  : means one file per year.
+# * "month" : means one file per month, in "[year]" subdirectory.
+# * "day"   : means one file per day, in "[year]/[month]" subdirectory.
+# Other value are silently ignored and are equivalent to "none".
+
+#set logging_sampling = day
 
 # Set log_muc_conf to 1 to enable MUC chatrooms logging (default = 0)
 #set log_muc_conf = 1
