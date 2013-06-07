@@ -1,0 +1,15 @@
+
+ /REQUEST last|ping|time|vcard|version [jid]
+
+Wysyła zapytanie "IQ" do aktualnie zaznaczonej osoby, albo do wskazanego użytkownika. Jeżeli zasób nie jest podany wraz z JIDem, mcabber wyśle kwerendę do wszystkich mu znanych zasobów tego użytkownika.
+
+/request last
+ Żąda "ostatnich" informacji (najczęściej czas bezczynności)
+/request ping
+ Wysyła żądanie XMPP Ping. Należy użyć pełnego JIDa; żądanie z niepełnym JIDem zostanie obsłużone przez serwer.
+/request time
+ Żąda zwrócenia jaki jest obecnie czas u danej osoby
+/request vcard
+ Żąda Vcard od danej osoby
+/request version
+ Żąda zwrócenia wersji klienta danej osoby

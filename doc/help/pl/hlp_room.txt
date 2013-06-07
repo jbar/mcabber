@@ -1,0 +1,50 @@
+
+ /ROOM join|leave|names|nick|remove|topic|unlock|destroy
+ /ROOM privmsg|invite|whois|kick|ban|unban|role|affil
+ /ROOM setopt print_status|auto_whois|flag_joins [wartość]
+ /ROOM bookmark [add|del] [-autojoin|+autojoin] [-|nick]
+
+Polecenie 'room' służy do obsługi wieloużytkownikowych chat-room'ów.
+
+/room join [pokój [nick [hasło]]]
+ Dołącza do pokoju "pokój" z ksywą "nick".  Jeżeli nie ma podanego nicka (albo jeśli jest to pusty ciąg znaków), użyta jest opcja "nickname" z pliku konfiguracyjnego.  Jeżeli podany pokój jest prawidłowy, skrót "." może być użyty zamiast pełnego id pokoju. Opcjonalnie można podać hasło "hasło". Jeśli Twój "nick" zawiera spacje - użyj cudzysłowów.
+/room leave [wiadomość]
+ Opuszcza aktualny pokój. Opcjonalnie można podać wiadomość "wiadomość"
+/room names [--detail|--short|--quiet]
+ Wyświetla kto jest w pokoju
+/room nick [nick]
+ Zmienia Twoją ksywę w aktualnym pokoju na "nick"
+/room privmsg [nick] [wiadomość]
+ Wysyła prywatną wiadomość [wiadomość] do osoby "nick"
+/room remove
+ Usuwa aktualny pokój z listy kontaktów (musisz najpierw opuścić pokój)
+/room topic -|newtopic
+ Ustawia temat dla aktualnego pokoju
+ (Użycie "-" spowoduje wyczyszczenie tematu)
+/room unlock
+ Odblokowuje aktualny pokój (jeśli jesteś jego właścicielem)
+/room destroy [powód]
+ Niszczy aktualny pokój (używać z rozwagą!)
+/room whois [nick]
+ Wyświetla informację MUC osoby "nick"
+/room ban jid [powód]
+ Banuje jid z powodu "powód" (opcjonalnie)
+/room unban jid
+ Odbanowanie jid z aktualnego pokoju
+/room invite jid [powód]
+ Zaprasza osobę jid do aktualnego pokoju z powodu "powód" (opcjonalnie)
+/room kick nick [powód]
+ Wyrzucenie osoby "nick" z aktualnego pokoju z powodu "powód" (opcjonalnie)
+/room role jid role [powód]
+ Zmienia rolę użytkownika jid (może być: "none", "visitor", "participant", "moderator")
+/room affil jid affil [powód]
+ Zmienia przynależność jid'a (może być: "none", "member", "admin", "owner")
+/room setopt print_status|auto_whois|flag_joins [warotść]
+ Zmienia ustawienia wyświetlania statusów dla aktualnego pokoju.
+ Możliwe wartości dla print_status: "default" (domyślne), "none" (wyłączone), "in_and_out" (wejścia i wyjścia), "all" (wszystkie).
+ Możliwe wartości dla auto_whois: "default" (domyślne), "off" (wyłączone), "on" (włączone).
+ For flag_joins, the possible values are "default", "none", "joins", "all".
+ Jeżeli została wybrana wartość "default", używane są ustawienia muc_print_status / muc_auto_whois / muc_flag_joins.
+/room bookmark [add|del] [-autojoin|+autojoin] [-|nick]
+ Dodaje, usuwa, aktualizuje zakładki (domyślnie dodaje).
+ Jeśli ustawiona jest opcja "autojoin", mcabber automatycznie dołączy do danego MUC po połączeniu z serwerem.

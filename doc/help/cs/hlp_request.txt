@@ -1,0 +1,15 @@
+
+ /REQUEST last|ping|time|vcard|version [jid]
+
+Pošle "IQ" žádost kontaktu 'jid' resp. aktuálně zvolenému kontaktu a zobrazí výsledek. Není-li zadán zdroj (resource) u jid, pošle se žádost všem známým zdrojům tohoto kontaktu.
+
+/request last
+ Požádá o poslední informaci (obvykle čas zahálení (idle)).
+/request ping
+ Požádá o odezvu. Je třeba použít úplné JID, neboť odezvu na holé JID odesílá server.
+/request time
+ Požádá o časové razítko.
+/request vcard
+ Požádá o vizitku (vCard).
+/request version
+ Požádá o verzi klienta.

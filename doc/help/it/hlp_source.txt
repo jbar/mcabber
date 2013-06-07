@@ -1,0 +1,4 @@
+
+ /SOURCE pattern
+
+Legge uno o più file di configurazione che corrispondano al pattern specificato (ordinati alfabeticamente).

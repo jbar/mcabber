@@ -1,0 +1,711 @@
+mcabber (0.10.2)
+
+ * Update receipts handling according to recent XEP updates (Myhailo Danylenko)
+ * Update and modularize the FIFO system (Myhailo Danylenko)
+ * Modularize url_regex
+ * [UI] Add readmark support - a line is displayed afer the last read message
+ * New command /buffer readmark
+ * Add command /iline clear_history
+ * Add command /iline iline_insert (Hermitifier)
+ * Add command /room setopt flag_joins (Hermitifier)
+ * The command /say_to has a new option '-e' so that "\n" can be used
+ * [MUC] Improve MUC support (Myhailo Danylenko)
+ * [MUC] Add support for XEP-0249 / Direct MUC Invitations (Myhailo Danylenko)
+ * [MUC] Refresh the roster when MUC bookmarks are received (Jan Zachorowski)
+ * [MUC] preserve bookmark when updating a non-joined room  (Jan Zachorowski)
+ * [MUC] Fix bookmarks losing autojoin attribute  (Hermitifier)
+ * [MUC] Display real JIDs in non-anonymous rooms (Hermitifier)
+ * [MUC] New option 'muc_bookmark_autoupdate' (Hermitifier)
+ * [MUC] Fix whois / auto_whois
+ * [UI] Remove deprecated invisible status
+ * [UI] Go back to the first buddy with /roster next_unread when there are
+        no more unread messages (Simon Jacquin)
+ * [UI] Add option 'roster_no_leading_space' to remove the extra space
+        before items in the roster (Simon Jacquin)
+ * [UI] Allow to select which buddy resource messages go to (issue #55)
+        with new commands /roster resource_lock|resource_unlock (Hermitifier)
+ * [UI] Do not warn when the configuration file contains 256-color values
+ * Add support for XEP-0115 Entity Capabilities,
+   with offline cache (Hermitifier)
+ * Fix segfault when spell checking is enabled and spell_lang is not set.
+ * Fix "/rename -" (Hermitifier)
+ * Do not add items to roster with commands /move and /rename (Hermitifier)
+ * [UI] Handle the Enter key on Maemo systems (diSabler)
+ * [UI] Add 'color_log' (text color in the log window)
+ * [UI] Add 'color_readmark' (readmark color in chat buffers)
+ * [UI] Use guards for colors (Myhailo Danylenko)
+ * Update color themes in contrib directory
+ * Documentation update
+ * Many misc. bugfixes and minor improvements
+
+ -- Mikael, 2012-12-02
+
+mcabber (0.10.1)
+
+ * Display a warning when the configuration file hasn't been updated
+ * Display better messages when connecting to the XMPP server
+ * [MUC] Do not block MUC private messages when 'block_unsubscribed' is set
+ * [MUC] Fix handling of empty room topic
+ * [MUC] Add caps to presence when joining a MUC room
+ * New option 'completion_ignore_case' - completion is now case sensitive
+   by default
+ * Display module API information in the output of /version
+ * Increase the number of available categories for completions
+ * [Hooks] New "hook-subscription" hook, update to the message-in hooks
+   (See ChangeLog.api)
+ * Many misc. bugfixes
+ * Minor documentation update
+
+ -- Mikael, 2010-12-01
+
+mcabber (0.10.0)
+
+ * Switch to the Loudmouth library (franky)
+ * Warning: 'username' has been replaced with 'jid' in the configuration file
+ * MCabber can now do DNS SRV lookups
+ * [UI] Buffers have priorities (and by default MUC rooms have a lower
+   priority).  The priority is used by mcabber to jump to the next unread
+   buffer.
+ * [UI] The attention sign (!) is displayed for urgent messages or when
+   the user nickname is used in a MUC room (depending on the buffer priority)
+ * [UI] Use locale to determine the online help language (Myhailo Danylenko)
+ * [UI] Print list of options with "/set" (Myhailo Danylenko)
+ * [UI] Fix iline word_upcase/word_downcase/word_capit commands
+ * Add support for modules in mcabber (Myhailo Danylenko)
+ * Sample "beep" module (Myhailo Danylenko)
+ * Allow commands shading (Myhailo Danylenko)
+ * Message Receipts (XEP-0184) support (franky)
+ * Update of Entity Capabilities support (franky)
+ * New command /request ping (Myhailo, Mikael)
+ * Add libidn support
+ * [MUC] Allow changing the nickname in MUC bookmarks (Myhailo Danylenko)
+ * [MUC] A suffix (i.e. ":") can be appended to completed nicknames
+ * Command "/source" now accepts a file pattern (Myhailo Danylenko)
+ * Tracelog level can now be changed at runtime (Myhailo Danylenko)
+ * Small vCard support improvements
+ * Startup status can be set in the configuration file
+ * Obsolete option 'hide_offline_buddies' has been removed
+ * Obsolete XEP-0022 (Message Events) is now disabled by default
+ * No suffix is displayed in the status bar after the 'info' value
+ * Add Vim syntax file for mcabber history log files to contrib
+
+ -- Mikael, 2010-04-11
+
+mcabber (0.9.10)
+
+ * Include Franky's mcabber user guide
+ * Add option "use_mouse" (franky)
+ * Reduce the CPU usage when the server is unreachable
+ * Export the FIFO pipe name as an environment variable (Lukas Kuklinek)
+ * Add support for spellchecking with Enchant (caolan)
+ * Add --compact parameter to /room names (shizeeg)
+ * Add count parameter to roster up/down command (knyar)
+ * Misc. fixes and improvements
+
+ -- Mikael, 2009-10-06
+
+mcabber (0.9.9)
+
+ * Fix uninitialized pointer (reported by T. Glaser)
+ * Clean up FIFO on SIGTERM (T. Glaser)
+ * New Czech translation
+ * Update PL and NL help files
+
+ -- Mikael, 2008-10-09
+
+mcabber (0.9.8)
+
+ * [UI] A new message flag (O) shows when OTR is used
+ * [UI] For folded groups, the number of unfiltered contacts is
+   displayed (franky)
+ * MCabber adds a random resource suffix by default
+   There is a new option 'disable_random_resource' to disable it.
+ * New command: /buffer save (save the contents of a buffer to a file)
+ * New command: /echo (display a message in the log window)
+ * New option 'fifo_ignore' (Suggested by T. Glaser)
+ * New option 'info' to display arbitrary strings in the status bar (franky)
+ * New option 'iq_hide_requests'
+ * New option 'url_regex' to extract URLs and display them in the log
+   window (franky)
+ * New pastebin/tiny-er event script (Alexander Clouter/Jamie Lentin)
+ * /roster hide/toggle doesn't automatically enable chat mode anymore
+ * '#' is displayed on the buddy status line when the current contact has
+   unread messages (M. Vuets)
+ * /room bookmark shows more information (autojoin, nick...)
+ * [MUC] Nickname colors now depend on nicknames (M. Vuets)
+ * [MUC] The topic can be cleared
+ * [OTR] Fix JID case issue (franky)
+ * More bugfixes and improvements (see detailed changelog)
+
+ -- Mikael, 2008-10-05
+
+mcabber (0.9.7)
+
+ * Pressing enter when a group is selected will toggle the fold status
+ * New option 'ignore_self_presence'
+ * New option 'log_display_presence'
+ * New option 'eventcmd_use_nickname'
+ * New option 'statefile' to keep track of unread messages across restarts
+ * New option to customize the away/notavail priority (Michael Gehring)
+ * New external "UNREAD" event
+ * Add FIFO named command pipe
+ * New switches for /say_to: -q, -f
+ * New command /status message (to only change the status description string)
+ * Let /del remove a MUC entry from the roster
+ * Allow more than the 16 default colors (mjs)
+ * Randomize the default resource
+ * Improve OTR support
+ * Improve Remote Controlling Clients (XEP-0146)
+ * Improve reading of history files
+ * Fix compilation on systems which need -lcharset
+ * Add optional SIGWINCH handler (Markus Hennecke)
+   (improves resize events on OpenBSD)
+ * Fixes from MirBSD (Thorsten Glaser)
+ * Some more fixes and improvements (see detailed changelog)
+
+ -- Mikael, 2008-04-17
+
+mcabber (0.9.6)
+
+ * Improve Cygwin support
+ * Fix compilation on OpenBSD
+ * [UI] New option 'escdelay'
+ * [MUC] New command /room setopt
+ * [MUC] More room settings are stored in the server private storage
+ * [MUC] The command /room ban can be used with a nickname
+ * [MUC] New rooms are automatically unlocked (suggested by M. Weiser)
+ * A few misc. bugfixes
+
+ -- Mikael, 2008-01-13
+
+mcabber (0.9.5)
+
+ * Implement internal hooks: post-connect, pre-disconnect
+ * Extend command /source; any command can be used in a sourced file
+   once mcabber is running
+ * [OTR] New option 'otr' (to enable OTR support in the conf. file)
+ * [OTR] Disable OTR encryption for non-user contacts
+ * [SSL] Do not connect when the SSL settings can't be used
+ * [MUC] Add "/room names --detail"
+ * Add command /roster item_toggle_lock
+ * A group name can be specified in the /group command
+ * [UI] Remove the restriction on the message sizes for displaying
+   incoming messages
+ * History logfile: Use a special code (MI) for local MUC info messages
+ * Usual misc. improvements and bugfixes
+ * Update Polish translation
+
+ -- Mikael, 2007-11-19
+
+mcabber (0.9.4)
+
+ * New mcabber command line option -V (displays the version)
+ * MCabber can be linked against GnuTLS
+ * Optional OTR support (Frank Zschockelt)
+   New commands /otr and /otrpolicy
+ * New command /room unban
+ * New command /roster display to filter the contacts per status
+ * New command /color (Michal 'vorner' Vaner)
+   - Add configurable roster colors
+   - Add configurable colors for info and incoming messages
+ * MUC nickname coloring (vorner)
+ * Add selectable time prefixes (vorner)
+ * Implement /buffer close|purge [jid]
+ * XEP-0203 - Delayed Delivery
+ * Improve iq:last support (Michael Scherer)
+ * Allow sending normal and headline messages (vorner)
+ * Allow longer lines in config file
+ * Fix proxy usage when SSL is disabled
+ * Misc. bugfixes
+ * New Italian translation (Alessandro Dotti Contra)
+ * Update online documentation and translations
+
+ -- Mikael, 2007-10-27
+
+mcabber (0.9.3)
+
+ * Enable gpg-agent again
+ * Improve MUC nickname completion
+ * Fix a roster bug when receiving a MUC invitation
+ * Fix Aspell support on some systems
+ * Update manpage and Polish translation
+
+ -- Mikael, 2007-06-19
+
+mcabber (0.9.2)
+
+ * XEP-0115 - Entity Capabilities
+ * "~" (HOME directory) is allowed in the configuration options
+ * The key binding system is much more flexible (Oleg Nemanov)
+ * New command "/source" to read a configuration file
+   New commands "/iline", "/chat_disable" and "/screen_refresh" (Oleg Nemanov)
+ * Aspell support (Piotr Zielonka)
+ * mcabber will load symlinked histories only once, now (Frank Zschockelt)
+ * Partial support for XEP-0146 [Remote Controlling Clients] (Michael Scherer)
+ * Line highlighting in MUC rooms
+ * Improve MUC nickname completion
+ * /roster bookmark in the status buffer now shows all bookmarks
+ * PGP encryption can be enforced with the "/pgp force" command
+ * New options "muc_flag_joins", "buddy_me_fulljid"
+ * New options for the command /room names: --short, --quiet
+ * A UTF-8 bug with group names has been fixed (Myhailo Danylenko)
+ * Fix a few odd command line behaviours (Oleg Nemanov)
+ * Fix a segfault in XMPP Ping support (reported by univac)
+ * Fix a small issue with Private Storage detection
+ * Misc. bugfixes
+ * A "mcabber.desktop" file is provided
+
+ -- Mikael, 2007-06-12
+
+mcabber (0.9.1)
+
+ * The Ctrl-q binding isn't hardcoded anymore
+ * Major memory management and speed improvement
+ * New commands "/buffer close" and "/buffer close_all"
+ * New options "cmdhistory_lines" and "max_history_blocks"
+ * New option "logging_ignore_status"
+ * Add a few event scripts (OSD and libnotify examples)
+ * New events option "events_ignore_active_window"
+ * Support for invitations to muc rooms (Michael Scherer)
+ * Response to XMPP Ping (XEP-0199) (Michael Scherer)
+ * Fix /say_to to contacts of a folded group (reported by Salvador)
+ * Fix a bug in the history logging (incoming "/me " messages)
+   (reported by Frank Zschockelt)
+ * Fix a few memory leaks (Michael Scherer)
+ * A few more misc. bug fixes and improvements
+ * Rewritten mcwizz setup script (Mulander)
+ * Add scripts to contrib: merge_history.py and filter_statusmsg.py
+   (Frank Zschockelt)
+ * help: Add Russian translation (Loenko Artyom)
+
+ -- Mikael, 2007-02-10
+
+mcabber (0.9.0)
+
+ * Auto-reconnection after a network or server failure
+ * XEP-0022/XEP-0085 - Events/ChatStates support, a.k.a. typing notifications
+   (Alexis Hildebrandt, Mikael)
+    New option "disable_chatstates"
+ * XEP-0027 - Current Jabber OpenPGP Usage
+   New options "pgp", "pgp_private_key"
+   New command "/pgp"
+ * XEP-0054 - VCard-temp (retrieval only)
+   New command "/request vcard"
+ * XEP-0048 - Bookmark Storage
+   MCabber can auto-join bookmarked rooms
+   New command "/room bookmark"
+ * XEP-0012 - Last Activity
+   New command "/request last"
+ * XEP-0145 - Annotations
+   New command "/roster note"
+ * New commands /roster item_lock|item_unlock
+   These commands allow us to lock a contact so that it stays visible in the
+   roster (when offline contacts are hidden).
+ * New commands /roster group_prev|group_next
+ * New options "log_win_on_top" and "roster_win_on_right"
+ * JID completion for hidden buddies/groups
+ * MCabber answers IQ disco#info queries
+ * Ctrl-d sends multi-line messages (same as /msay send)
+ * help: Add Ukrainian translations (Myhailo Danylenko)
+ * Configurable command character (Alexis Hildebrandt)
+ * Fix unicode detection on BSD systems
+ * Misc. bug fixes and improvements
+ * Update documentation and translations
+
+ -- Mikael, 2006-12-16
+
+mcabber (0.8.3)
+
+ * Fix truncation of UTF-8 buddy names in the roster (Myhailo Danylenko)
+ * Fix SSL support on OS X (Alexis Hildebrandt)
+ * Fix a freeze with some mistakes in the configuration file
+ * Update the sample event script to be more portable
+ * Fix some UTF-8 related issues
+ * Fix permissions of help files
+ * Correctly display the first message of a buffer (it wasn't wrapped)
+
+ -- Mikael, 2006-11-16
+
+mcabber (0.8.2)
+
+ * Fix a freeze with UTF-8 locales
+   Some commands were causing a freeze when there was a trailing space
+   in the command line.
+ * The current ssl_verify value is used in /connect (no need to restart
+   mcabber)
+ * System messages are not blocked anymore when the option
+   "block_unsubscribed" is set
+ * Do not enter chat mode after command "/del" or when somebody joins a room
+ * Display mcabber version in the status window (when chat mode is disabled)
+   (Suggested by pmw & hednod)
+ * Small code cleanup and a few cosmetic changes
+
+ -- Mikael, 2006-09-19
+
+mcabber (0.8.1)
+
+ * Fix a bug in key bindings (with special keys)
+ * Fix a compilation issue on some systems (e.g. Slackware)
+
+ -- Mikael, 2006-08-21
+
+mcabber (0.8.0)
+
+ * UTF-8 terminal support (Reimar Döffinger)
+ * SSL server certificate verification (Jefferson Ogata)
+ * CPU usage improvement (Christof Meerwald)
+ * New configuration script, mcwizz.pl (Adam Wolk, Mateusz Karkula)
+
+ -- Mikael, 2006-08-13
+
+mcabber (0.7.8)
+
+ * Fix a small issue in make install
+ * help: Add French translations
+ * help: Add Polish translations (Michal Jeczalik Jr/Daniel Czerniawski)
+
+ -- Mikael, 2006-06-27
+
+mcabber (0.7.7)
+
+ * New "status" special buffer
+   This buffer contains the log window data.
+ * MCabber does not stop when there is no configuration file
+ * New command "/help" (online help)
+ * New command "/authorization request_unsubscribe"
+ * New command "/msay toggle_verbatim"
+ * New command "/buffer purge"
+ * New commands "/buffer scroll_lock|scroll_unlock|scroll_toggle"
+ * The commands /alias and /bind now list the defined aliases and key bindings
+ * Groups can now be renamed
+ * Fix a small buddylist bug when receiving a subscription request
+   (the buddylist wasn't always refreshed)
+ * Fix a bug (hang) in the input line
+ * Display incomplete subscriptions in the roster
+ * Remember the status message when a contact goes offline
+ * Extand "/event" to allow a wildchar '*'
+ * New option "block_unsubscribed"
+   When set, messages from people who don't have a subscription to our
+   presence updates are blocked.
+ * New option "delete_on_reject"
+   When set, people are automatically removed from the roster if their
+   subscription request is rejected.
+ * New option "max_history_age"
+ * MUC: New option "muc_auto_whois"
+ * MUC: MCabber can join password-protected chatrooms
+ * MUC: Allow "/room join . [nick [pass]]" if the current item is a MUC room
+ * MUC: Fix joining a room when the buddylist is empty
+ * MUC: Try to work around some server and network issues
+ * Ctrl-l now rereads color option values
+ * Tab characters are expanded when the "verbatim multi-line mode" is enabled
+ * Disable file permission checks on Cygwin
+ * Improve logging (especially, XML data isn't truncated anymore)
+ * Fix negative priority
+ * Fix a few memory leaks
+ * Other misc. bugfixes and improvements
+ * Documentation updates
+
+ -- Mikael, 2006-06-21
+
+mcabber (0.7.6)
+
+ * Initial Cygwin port (Soren Andersen)
+ * Fix a segfault when mcabber is not connected to a Jabber server
+   (reported by Mario Iseli)
+ * Correctly restore term settings when interrupting the password query
+ * Fix a small bug in the /request command (reported by pmw)
+ * MUC: Fix "/room whois" with UTF-8 nickname
+ * MUC: Fix completion for UTF-8 nicknames
+ * Improve support for long messages
+ * Add command "/msay toggle"
+ * Allow messages with a subject (with /msay)
+ * New option "log_display_sender"
+ * Multi-line mode: Do not send empty messages
+ * Update documentation
+
+ -- Mikael, 2006-04-14
+
+mcabber (0.7.5)
+
+ * History files now use UTF-8 encoding
+   See file "NEWS" for an example to convert existing log files
+ * UI change: Add two status/info lines
+ * Meta keys can be used (and bound to a command)
+ * Add Ctrl-left/right to move 1 word backward/forward in the input line
+ * Outgoing messages can be colorized
+ * The color options names have changed, several colors have been added.
+   Bright (bold) colors can be used for the text.
+   A theme directory has been created.
+ * New "/event" command.
+   Subscription requests are not automatically accepted anymore.
+ * New IQ system, for Jabber IQ request
+ * Add "/request time|version" commands
+ * Add "/roster hide|show|toggle" commands
+   This allows having a full-width chat window.
+ * Group names are now case sensitive
+ * Add "--enable-hgcset" option to the ./configure script, for people using
+   the Mercurial repository.  If used, the /version command will display
+   the Mercurial changeset.
+ * We try to display as many roster items as possible in the buddylist
+ * New "beep_on_message" option
+ * New "eventcmd_checkstatus" option
+ * New "roster_width" option
+ * Improved English messages (thanks to Philip M. White)
+ * Fix a small issue with resources containing uppercase chars in /status_to
+ * Fix iq:time handling: really return UTC time when answering a request
+ * Sync libjabber with upstream
+ * A lot of small bugfixes
+ * Documentation updates
+
+ -- Mikael, 2006-04-03
+
+mcabber (0.7.4)
+
+ * Fix a segfault when reconnecting to the server or rejoining a room
+ * Fix a segfault when a group and a contact have the same name
+
+ -- Mikael, 2006-01-17
+
+mcabber (0.7.3)
+
+ * Fix a segfault when a resource contains non-representable chars
+ * Fix an UTF-8 encoding issue when joining a room
+ * Fix an eventcmd issue
+ * Chat Mode is automatically enabled when some commands are entered
+   ("/info", "/room names", "/room whois")
+ * Messages can be sent to agents
+ * The unread_message flags are not reset when the server connection is lost
+ * MUC: server messages do not set the new_message flag anymore
+ * New "load_muc_logs" option, logfiles are not loaded for MUC room by default
+ * New "nickname" option, to set the default nickname in chatrooms
+ * Add "/msay send_to" command
+ * "/add" and "/status_to" can be used with special jid "." for the current
+   selected buddy
+ * Lots of misc. bugfixes
+ * Documentation updates
+
+ -- Mikael, 2006-01-12
+
+mcabber (0.7.2)
+
+ * Lots of internal changes (code cleanup)
+ * Improved commands parsing
+   Commands now handle correctly resources or nicknames containing whitespace
+ * The roster is updated in real time when receiving an update from the server
+ * "/info" shows subscriptions (none, from, to, both)
+ * "/info" and "/room whois" show presence timestamp
+ * Add "/authorization" command, to manage subscriptions
+ * mcabber now answers IQ requests
+ * The deprecated Agent list IQ request has been removed
+ * Empty resources are displayed (do not use the arbitrary "default" string
+   instead)
+ * MUC: "/room topic" shows the current room topic
+ * MUC: "/room nick" shows the current nickname
+ * MUC: Add "/room kick", "/room ban", "/room whois"
+ * MUC: Add "/room affil" and "/room role"
+ * MUC: Add "/room destroy"
+ * MUC: Display a message when somebody is kicked/banned from a room
+ * MUC: Display a message (and the reason, if there is one) when a room has
+   been destroyed
+ * MUC: Multiple other fixes and improvements
+ * Handle messages beginning with "/me " (it is replaced with the nickname)
+ * New "/version" command
+ * Documentation updates
+
+ -- Mikael, 2005-12-19
+
+mcabber (0.7.1)
+
+ * New option 'buddy_format' to select the way buddies are displayed in
+   the log window
+ * New option 'show_status_in_buffer' to display status changes in the
+   buffer (chat) window
+ * The "/status" command has been improved -- its behaviour has changed,
+   please read the manual page
+ * The log window height can be set
+ * Add "/buffer up" and "/buffer down" commands
+ * The "/move" command does not jump to the body in the new group anymore
+ * MUC: Nickname completion in a room
+ * MUC: Improved "/room names" command
+ * MUC: departure messages are displayed
+ * MUC: mcabber now notices when it is ejected from a room
+ * MUC: status is updated in chatrooms
+ * External commands: the message body can be passed to the external command
+   (see the sample configuration file and the sample eventcmd script)
+ * UTF-8 conversion failures are written to the tracelog file (if enabled)
+ * The resource priority can now be changed once connected
+ * Fix a bug when moving a chatroom to another group (in the roster)
+ * Minor cleanup (warnings, small memory leaks and compilation stuff)
+
+ -- Mikael, 2005-11-26
+
+mcabber (0.7.0)
+
+ * mcabber should build on FreeBSD
+ * New /rawxml command
+ * New /status_to command
+ * New /stay_to command
+ * Multiple resources support
+   The resources can be seen using the /info command
+ * Initial Multi-User Chat support
+   New /room command (invite, join, leave, names, nick, privmsg, remove,
+   topic, unlock)
+ * Warn the user when a message is received, which cannot be decoded
+   (local charset unable to display some chars, for example)
+ * Fix a bug when a buddy's name cannot be converted from utf-8 for
+   being displayed in the roster (fall back to jid)
+ * Fix: Status message is not lost anymore when using /move command
+ * Add "/buffer %" and "/buffer date"
+ * A few misc bugfixes
+ * Update documentation
+
+ -- Mikael, 2005-10-10
+
+mcabber (0.6.8)
+
+ * Proxy support (see updated mcabberrc sample file)
+ * Better handling of server error codes/messages (we try to respect RFC3920)
+ * A contact does not show up as "online" anymore when mcabber receives an
+   error presence packet
+ * Check the tracelog file actually belongs to the user, if logging is enabled
+ * Fix a potential connection failure introduced in 0.6.7
+
+ -- Mikael, 2005-09-12
+
+mcabber (0.6.7)
+
+ * Allow a different server name than the jid domain name
+   (which allows connecting to Google Talk).
+   The libjabber patch (credited to Ian Johannesen) comes from centericq.
+ * Reduce CPU consumption when mcabber is not connected to a Jabber server
+ * Update libjabber (sync with upstream)
+ * Fix a weird crash when trying to connect to a closed port
+ * Display text messages corresponding to the Jabber server error codes
+ * Display full dates in the trace logfile
+
+ -- Mikael, 2005-09-02
+
+mcabber (0.6.6)
+
+ * Use Glib for UTF-8 conversions
+ * A screen resize does not terminate auto-away
+ * Ctrl-l does a full screen refresh
+ * Ctrl-c is treated as a normal key; we're now using ncurses raw mode
+   so it doesn't trigger a signal
+ * Speed up history file loading
+
+ -- Mikael, 2005-08-17
+
+mcabber (0.6.5)
+
+ * Add Debian directory for packaging, create an experimental package
+ * Add a few external actions (MSG OUT, STATUS *)
+   The contrib/eventcmd script has been updated
+ * Use better messages for server connection states
+ * [FIX] Fix a segfault when starting mcabber in a really small terminal
+ * Fix some history log directory issues
+ * - Check history directory permissions and configuration file permissions
+     They are corrected automatically (to 700 and 600)
+   - Warn when mcabber main directory ($HOME/.mcabber) has bad permissions
+ * First Ctrl-c didn't really leave multi-line message mode! (merge issue)
+ * Add "/buffer search_backward"  and "/buffer search_forward", to search
+   for a string in a buffer window
+ * Add "/roster up" and "/roster down" commands
+ * New logging system.  The "debug" file has been replaced by a "trace file",
+   and 2 levels are available.  In level 1, the messages from the log window
+   are written to te trace file.  In level 2, debug messages and XML are
+   written to the file.  See the sample configuration file.
+ * A few other internal changes and minor bugfixes
+
+ -- Mikael, 2005-07-26
+
+mcabber (0.6.4)
+
+ * Configuration file format change (see NEWS file)
+   Aliases & key bindings can be put in the config. file
+ * Enable /set command
+ * [FIX] Convert status messages to/from UTF-8
+ * The /status command can specify a status message
+ * Display the buddy status message when a buddy connects/changes his status
+ * New autoaway feature (see sample config. file)
+ * New "/roster alternate".  Jumps to the last buddy window left in chat mode
+ * Handle "error" message type
+ * One Ctrl-c does not terminate mcabber anymore (the 2nd Ctrl-c does), but
+   leaves multi-line message mode and aborts current completion
+ * Add a sample script to handle events (currently, it plays a sounds when
+   a message is received)
+
+ -- Mikael, 2005-07-20
+
+mcabber (0.6.3)
+
+ * Fix interactive password crash
+ * Disable /set command (it is almost useless)
+
+ -- Mikael, 2005-07-12
+
+mcabber (0.6.2)
+
+ * The history log file format has changed; the old log files written by
+   mcabber < 0.6.1 are no longer supported and should be converted.
+   Please see the NEWS file for the details.
+ * New multi-line "verbatim" mode (/msay verbatim).  In this mode, all
+   commands but /msay are disabled, so that lines beginning with a slash
+   can be sent
+ * Ctrl-o (accept-line-and-down-history) has been added
+ * Add "/roster search jid|name" to look for somebody in the current buddylist
+ * Color configuration handling improvement
+   NOTE: configuration file needs to be updated; see sample config. file!
+ * Resource priority can be set (see sample config. file)
+ * Status messages can be user-defined (see sample config. file)
+ * mcabber now warns when logging is enabled and there is a write error while
+   writing to log files
+ * Remove busy/occupied status, which does not exist (it could be an alias for
+   dnd)
+ * The settings system has been rewritten
+ * Fix segfault when the resource is not specified
+ * New /alias command
+ * New /bind command
+ * Add /roster toggle_offline
+ * Add /connect and /disconnect commands
+
+ -- Mikael, 2005-07-11
+
+mcabber (0.6.1)
+
+  * Fix backspace handling (KEY_BACKSPACE isn't reliable)
+  * Change logfile date format to iso8601 (more readable!)
+    A script is available in contrib/ to convert the existing (old) logfiles
+    MCabber will display a warning when parsing an old-style file
+  * Implement Ctrl-q (jump to first/next unread message)
+  * Implement initial support for multi-line messages (/msay command)
+  * The /add command can now set the nickname
+  * Display a warning when the locale is UTF-8
+  * Display log notice when sending a notification request message
+  * Update INSTALL and mcabberrc.example files for better explanations
+  * Comment out useless code (fix a compilation error with gcc 4)
+  * Add Makefile for the doc subdir; the manpage will be installed now
+  * Minor fixes
+
+ -- Mikael, 2005-06-25
+
+mcabber (0.6.0)
+
+  Initial fork from cabber 0.5.0-test1
+  Lots of changes, here is a quick summary:
+  * Use automake/autoconf
+  * Switch to libjabber
+  * SSL support with OpenSSL (should work with gnutls but I didn't
+    succeed)
+  * History scrolling and resizing
+  * History logging (and reading)
+  * Small manpage (AsciiDoc documentation)
+  * Buddy groups implementation
+    - fold/unfold groups
+    - hide/show offline buddies
+  * Commands, and command completion system
+  * Hooks for external events (for ex. when receiving a message)
+
+ -- Mikael, 2005-06-07
+
+# vim:set fileencoding=utf-8:

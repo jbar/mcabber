@@ -1,0 +1,16 @@
+
+ /EVENT #N|* accept|ignore|reject [parametri dipendenti dall'evento]
+ /EVENT list
+
+Istruisce mcabber su cosa fare per gli eventi in attesa.
+Se il primo parametro è '*', il comando verrà eseguito su tutti gli eventi in attesa.
+I parametri dipendenti dall'evento vengono interpretati a seconda dell'evento. L'unico caso predefinito di ha quando il parametro è un rifiuto di invito ad una MUC - il parametro, se presente, verrà interpretato come il motivo del rifiuto.
+
+/event #N|* accept
+ L'evento numero #N/All verrà accettato
+/event #N|* ignore
+ L'evento numero #N/All verrà ignorato
+/event #N|* reject
+ L'evento numero #N/All verrà rifiutato
+/event list
+ Elenca tutti gli eventi in attesa

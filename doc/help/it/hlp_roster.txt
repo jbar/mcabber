@@ -1,0 +1,64 @@
+
+ /ROSTER bottom|top|up|down|group_prev|group_next
+ /ROSTER alternate|unread_first|unread_next
+ /ROSTER search bud
+ /ROSTER display|hide_offline|show_offline|toggle_offline
+ /ROSTER item_lock|item_unlock|item_toggle_lock
+ /ROSTER hide|show|toggle
+ /ROSTER note [-|testo]
+ /ROSTER resource_lock|resource_unlock
+
+Il comando 'roster' manipola la lista dei contatti.
+Ecco i parametri disponibili.
+
+/roster bottom
+ Salta in fondo al roster
+/roster top
+ Salta in cima al roster
+/roster up [n]
+ Sposta verso l'alto
+/roster down [n]
+ Sposta verso il basso
+/roster group_prev
+ Salta al gruppo precedente
+/roster group_next
+ Salta al gruppo successivo
+/roster alternate
+ Salta al conatto alternativo. Il contatto alternatico è l'ultimo contatto con cui hai parlato in modalità chat. Questo comando è quindi utlie dopo comandi quali "/roster unread_next" (Ctrl-q).
+/roster unread_first
+ Salta al primo messaggio non letto
+/roster unread_next
+ Salta al messaggio non letto successivo
+/roster search bud
+ Cerca il contatto il cui nome o jid contengono "bud" (solo nella lista contatti visualizzata)
+/roster display [mask]
+ Mostra o aggiorna il filtro per il roster.
+ La maschera consiste di una lettera corrispondente allo stato che vuoi visualizzare ([o]nline, [f]ree_for_chat, [d]o_not_disturb, [n]ot_available, [a]way, [_]offline).
+ Per esempio, "ofdna" mostra solo i contatti connessi.
+ "*" può essere usato come scorciatoio per visualizzare tutti i contatti.
+/roster hide_offline
+ Nasconde i contatti offline (come /roster display ofdna)
+/roster show_offline
+ Mostra i contatti offline (come /roster display ofdna_)
+/roster toggle_offline
+ Visualizza/Nasconde i contatti offline
+/roster item_lock [jid]
+ Blocca un elemento del roster in modo che rimanga visibile a prescindere dal suo stato
+/roster item_unlock [jid]
+ Cancella gli effetti di item_lock
+/roster item_toggle_lock [jid]
+ Inverte lo stato del lock per il contatto corrente o per il contatto specificato da jid
+/roster hide
+ Nasconde il roster (chat a finestra piena)
+/roster show
+ Mostra il roster
+/roster toggle
+ Mostra/Nasconde il roster
+/roster note [-|testo]
+ Imposta/aggiorna/cancella una annotazione
+ Se "testo" non viene specificato, viene visualizzata l'annotazione dell'elemento corrente -- se ti trovi nel buffer di stato, vengono visualizzate tutte le note.
+ Se "testo" e "-", la nota viene cancellata.
+/roster resource_lock [full jid|resource]
+ Set active resource for a buddy in roster. Accepts special jid "./resource" for current buddy, or just a resource name.
+/roster resource_unlock [jid]
+ Unset active resource for a buddy. Accepts special jid "." for current buddy.

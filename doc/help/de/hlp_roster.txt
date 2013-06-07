@@ -1,0 +1,61 @@
+
+ /ROSTER bottom|top|up|down|group_prev|group_next
+ /ROSTER alternate|unread_first|unread_next
+ /ROSTER search bud
+ /ROSTER display|hide_offline|show_offline|toggle_offline
+ /ROSTER item_lock|item_unlock|item_toggle_lock
+ /ROSTER hide|show|toggle
+ /ROSTER note [-|text]
+ /ROSTER resource_lock|resource_unlock
+
+Mit diesem Befehl kann man den Roster/die Buddyliste bearbeiten.
+Hier die möglichen Parameter:
+
+/roster bottom
+ Springe zum Ende der Liste
+/roster top
+ Springe an den Anfang von der Liste
+/roster up/down [n]
+ Nach oben bzw. unten navigieren (um n Zeilen)
+/roster group_prev
+ Vorherige Gruppe auswählen
+/roster group_next
+ Nächste Gruppe auswählen
+/roster alternate
+ Zu dem Kontakt springen, mit dem man zuletzt gesprochen hat. Dieser Befehl ist besonders nützlich, nachdem man Befehle wie "/roster unread_next" (strg+q) benutzt hat.
+/roster unread_first
+ Die erste ungelesene Nachricht öffnen
+/roster unread_next
+ Die nächste ungelesene Nachricht öffnen
+/roster search bud
+ Jemanden auf dem Roster suchen, der "bud" im Namen oder der jid hat (durchsucht nur die angezeigten Buddies)
+/roster display [maske]
+ Mit diesem Befehl kann man festlegen, welche Buddies angezeigt werden sollen.
+ Als Maske werden die Buchstaben fuer die Statusse benutzt.
+ ([o]nline, [f]ree_for_chat, [d]o_not_disturb, [n]ot_available, [a]way, [_]offline).
+ Mit der Maske "ofdna" werden alle Buddies angezeigt, die gerade online sind.
+ Um alle Buddies anzuzeigen kann man auch das Kürzel "*" statt ofdna_ benutzen.
+ Gibt man keine Maske an, wird die aktuelle Maske im Status Buffer angezeigt.
+/roster hide_offline
+ Alle Buddies die offline sind verstecken
+/roster show_offline
+ Auch Buddies die offline sind anzeigen
+/roster toggle_offline
+ Wechsel zw. Anzeigen/Verstecken der Buddies die offline sind (standardmäßig auf F5)
+/roster item_lock [jid]
+ Anzeige von dem Buddy mit der jid sichern, sodass man ihn immer sieht, egal wie sein Status ist
+/roster item_unlock [jid]
+ "/roster item_lock" rückgängig machen
+/roster item_toggle_lock [jid]
+/roster hide
+ Den Roster verstecken, sodass das Chatfenster die ganze Breite bekommt
+/roster show
+ Den Roster wieder anzeigen
+/roster toggle
+ Roster anzeigen/verstecken im Wechsel (standardmäßig auch auf F12)
+/roster note [-|text]
+ Eine Notiz "text" zu dem aktuellen Eintrag im Roster hinzufügen. Dieser wird angezeigt, wenn gerade kein Chat mit demjenigen läuft. Alle Notizen werden im Status Puffer angezeigt. Um die Notiz zu löschen setzt man den Text auf "-".
+/roster resource_lock [full jid|resource]
+ Setzt die aktive Resource für den Buddy im Roster. Akzeptiert "./resource" für den ausgewählten Buddy oder auch nur einen Resource Bezeichner.
+/roster resource_unlock [jid]
+ Löscht die aktive Resource für den Buddy. Akzeptiert "." für den ausgewählten Buddy.

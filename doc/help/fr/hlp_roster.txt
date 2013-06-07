@@ -1,0 +1,63 @@
+
+ /ROSTER bottom|top|up|down|group_prev|group_next
+ /ROSTER alternate|unread_first|unread_next
+ /ROSTER search bud
+ /ROSTER display|hide_offline|show_offline|toggle_offline
+ /ROSTER item_lock|item_unlock|item_toggle_lock
+ /ROSTER hide|show|toggle
+ /ROSTER note [-|text]
+ /ROSTER resource_lock|resource_unlock
+
+Cette commande permet de manipuler le roster (liste de contacts).
+
+/roster bottom
+ Va à la fin de la liste de contact
+/roster top
+ Va au début de la liste de contact
+/roster up [n]
+ Monte [de n lignes] dans le roster
+/roster down [n]
+ Descend [de n lignes] dans le roster
+/roster group_prev
+ Va au groupe précédent in the roster
+/roster group_next
+ Va au groupe suivant in the roster
+/roster alternate
+ Va au contact alternatif. Ce contact "alternatif" est le dernier contact quitté tout en étant en mode discussion (chat mode). Cette commande est donc particulièrement utile après des commandes comme "/roster unread_next" (Ctrl-q).
+/roster unread_first
+ Va au premier message non lu
+/roster unread_next
+ Va au prochain message non lu
+/roster search bud
+ Cherche un contact dont le nom ou le jid contient "bud" (seulement dans les contacts affichés)
+/roster display [masque]
+ Affiche ou met à jour le filtre du roster.
+ Le masque doit contenir les lettres-raccourcis des états que vous voulez voir affichés ([o]nline, [f]ree_for_chat, [d]o_not_disturb, [n]ot_available, [a]way, [_]offline).
+ Par exemple "ofdna" pour n'afficher que les contacts connectés.
+ "*" peut être utilisé comme raccourci pour afficher tous les contacts.
+/roster hide_offline
+ Cache les contacts non connectés
+/roster show_offline
+ Affiche les contacts non connectés
+/roster toggle_offline
+ Inverse l'affichage des contacts non connectés
+/roster item_lock [jid]
+ Affiche le contact dans le roster, même s'il est déconnecté
+/roster item_unlock [jid]
+ Annule l'effet de /roster item_lock
+/roster item_toggle_lock [jid]
+ Inverse le verrou (lock)
+/roster hide
+ Cache le roster (fenêtre de discussion en pleine largeur)
+/roster show
+ Affiche le roster
+/roster toggle
+ Inverse l'affichage du roster (hide/show)
+/roster note [-|texte]
+ Ajoute, modifie ou supprime une annotation.
+ Si le texte n'est pas précisé, l'annotation actuelle de l'élément sélectionné est affichée -- si vous êtes dans la fenêtre d'état (status), toutes les notes seront affichées.
+ Si le texte est "-", l'annotation est supprimée.
+/roster resource_lock [full jid|resource]
+ Définit la ressource active pour un contact donné du roster. Il est possible d'utiliser la syntaxe "./resource" pour le contact courant, ou bien uniquement un nom de ressource.
+/roster resource_unlock [jid]
+ Initialise la ressource active pour un contact. Il est possible d'utiliser "." pour le contact sélectionné.

@@ -1,0 +1,4 @@
+
+ /SOURCE pattern
+
+Alle Konfigurationsdateien laden, welche auf das glob Muster "pattern" passen.

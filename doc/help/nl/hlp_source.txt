@@ -1,0 +1,4 @@
+
+ /SOURCE tekst-patroon
+
+Lees configuratie-bestanden in, die voldoen aan het tekst-patroon (gesorteerd op alfabetische volgorde).

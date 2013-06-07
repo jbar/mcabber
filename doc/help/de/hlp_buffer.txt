@@ -1,0 +1,45 @@
+
+ /BUFFER clear|close|close_all|purge|list
+ /BUFFER top|bottom|date|%|readmark
+ /BUFFER search_backward|search_forward
+ /BUFFER scroll_lock|scroll_unlock|scroll_toggle
+ /BUFFER save filename
+
+Befehl um den Puffer für den momentan ausgewählten Buddy zu verändern. Man kann zum Beispiel suchen, das Chatfenster leeren, usw...
+
+/buffer clear
+ Leere das gerade offene Chatfenster
+/buffer close [jid]
+ Leert den Inhalt des Puffers und schließt das momentan geöffnete Chatfenster
+/buffer close_all
+ Leert alle Chatpuffer und schließt alle Chatfenster
+/buffer purge [jid]
+ Leere das Chatfenster und lösche den Inhalt des Chatpuffers
+/buffer list
+ Zeigt eine Liste der existierende Puffer und deren Länge(Zeilen/Blöcke) an.
+/buffer top
+ Springe zum Anfang des momentanen Chat Puffers
+/buffer bottom
+ Springe zu dem Ende des momentanen Chat Puffers
+/buffer up [n]
+ Scrollt den Puffer um n Zeilen hoch. Gibt man keine Zahl an, scrollt er um einen halben Bildschirm
+/buffer down [n]
+ Scrollt den Puffer um n Zeilen runter. Gibt man keine Zahl an, scrollt er um einen halben Bildschirm
+/buffer date [date]
+ Springe zu der ersten Zeile nach dem Datum, welches im Format "JJJJ-mm-tt" anstatt [date] angegeben werden muss
+/buffer % n
+ Springe zur Position "n" im Chatpuffer
+/buffer readmark
+ Springe zur Lesemarkierung (erste ungelesene Zeile), wenn es eine gibt
+/buffer search_backward text
+ Suche rückwärts im Puffer nach "text"
+/buffer search_forward text
+ Suche vorwärts im Puffer nach "text"
+/buffer scroll_lock
+ Scrollen des Puffers blockieren
+/buffer scroll_unlock
+ Scrollen des Puffers erlauben
+/buffer scroll_toggle
+ Scrollen des Puffers ein-/ausschalten
+/buffer save filename
+ Speichert den Inhalt des aktuellen Puffers in der Datei "filename"

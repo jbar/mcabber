@@ -1,0 +1,69 @@
+
+ /ILINE fchar|bchar|char_fdel|char_bdel|char_swap
+ /ILINE fword|bword|word_bdel|word_fdel
+ /ILINE word_upcase|word_downcase|word_capit
+ /ILINE hist_beginning_search_bwd|hist_beginning_search_fwd
+ /ILINE hist_prev|hist_next
+ /ILINE iline_start|iline_end|iline_fdel|iline_bdel
+ /ILINE iline_accept|iline_accept_down_hist
+ /ILINE iline_insert
+ /ILINE clear_history
+ /ILINE compl_do|compl_cancel
+ /ILINE send_multiline
+
+Cette commande permet de manipuler la ligne de commandes. En général elle sera utilisée par l'intermédiaire de la commande "bind".
+
+/iline fchar
+ Aller au caractère suivant
+/iline bchar
+ Aller au caractère précédent
+/iline char_fdel
+ Supprimer le caractère situé sous le curseur
+/iline char_bdel
+ Supprimer le caractère précédant le curseur
+/iline char_swap
+ Échanger les deux caractères (sous/avant le curseur)
+/iline fword
+ Avancer le curseur jusqu'à la fin du mot (ou du prochain mot)
+/iline bword
+ Reculer le curseur jusqu'au début du mot (ou du mot précédent)
+/iline word_bdel
+ Effacer le début du mot jusqu'au curseur
+/iline word_fdel
+ Effacer la fin du mot depuis le curseur
+/iline word_upcase
+ Convertir la fin du mot en majuscules depuis le curseur
+/iline word_downcase
+ Convertir la fin du mot en minuscules depuis le curseur
+/iline word_capit
+ Mettre une lettre capitale sous le curseur (ou au prochain mot) et la fin du mot en minuscules
+/iline hist_beginning_search_bwd
+ Chercher la ligne précédente de l'historique ligne de commande commençant comme la ligne actuelle jusqu'au curseur (le curseur est laissé à la même position)
+/iline hist_beginning_search_fwd
+ Chercher la ligne suivante de l'historique ligne de commande commençant comme la ligne actuelle jusqu'au curseur (le curseur est laissé à la même position)
+/iline hist_prev
+ Charger la ligne précédente de l'historique ligne de commande
+/iline hist_next
+ Charger la ligne suivante de l'historique ligne de commande
+/iline iline_start
+ Aller au début de la ligne de commande
+/iline iline_end
+ Aller à la fin de la ligne de commande
+/iline iline_fdel
+ Effacer la fin de la ligne de commande depuis le curseur
+/iline iline_bdel
+ Effacer le début de la ligne de commande jusqu'au curseur
+/iline iline_accept
+ Accepter/valider la ligne de commande
+/iline iline_accept_down_hist
+ Accepter/valider la ligne de commande et charger la ligne suivante de l'historique ligne de commande
+/iline iline_insert texte
+ Insérer le texte dans la ligne de commande, à la position du curseur. Notez que les guillemets doivent être protégés (\"), et que l'écran n'est pas rafraîchi (cf. /screen_refresh).
+/iline clear_history
+ Efface l'historique de la ligne de commande
+/iline compl_do
+ Compléter le mot actuel dans la ligne de commande
+/iline compl_cancel
+ Annuler le complètement du mot
+/iline send_multiline
+ Envoyer le message multi-lignes

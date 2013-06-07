@@ -1,0 +1,5 @@
+
+ /HELP [polecenie|+temat]
+
+Wyświetla pomoc dla polecenia "polecenie".
+Przykład: "/help buffer"

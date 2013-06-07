@@ -1,0 +1,4 @@
+
+ /ECHO wiadomość
+
+Wypisuje "wiadomość" oknie logowania.

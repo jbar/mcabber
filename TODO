@@ -1,0 +1,37 @@
+
+TODO:
+
+Please see the issue tracker for other features/bugs:
+http://bitbucket.org/McKael/mcabber-crew/issues/?status=new&status=open
+
+The following list isn't necessarily up-to-date:
+
+* Improve the completion system
+* Enable /roster search for offline (hidden) buddies (hidden groups, etc.)
+* Publish personal information (a module exists)
+* MUC: advanced settings for room creation
+* MUC: ignore patterns
+* "Offline roster" (when disconnected)
+* Maybe cache iq:version and show version in /info, if available
+* Sort roster by status
+* 2-levels roster display (jids, resources)
+* XEP-0186: Invisible
+* "Ignore list" (privacy lists)
+  See XEP-0191: Simple Communications Blocking
+* Human-readable key binding config?
+* Possibility to hide log window(?)
+* Improve /info, esp. in MUC rooms
+* Data Forms (a module exists)
+
+* File transfer!!
+  Cf. GSoC 2010: http://github.com/alkino/mcabber-jingle/
+
+* Commands:
+
+  - /roster enable|disable xml
+  - /highlight nick
+  - /info [jid]
+    (request info to the server if the buddy is not in the roster)
+  - /server register|unregister
+  - /search <jid>|name
+    (server search)

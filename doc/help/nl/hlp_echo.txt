@@ -1,0 +1,4 @@
+
+ /ECHO bericht
+
+Toon "bericht" in het log venster.

@@ -1,0 +1,51 @@
+
+ /ROOM join|leave|names|nick|remove|topic|unlock|destroy
+ /ROOM privmsg|invite|whois|kick|ban|unban|role|affil
+ /ROOM setopt print_status|auto_whois|flag_joins [wert]
+ /ROOM bookmark [add|del] [-autojoin|+autojoin] [-|nick]
+
+Der "room" Befehl umfasst die Multi-User Chat (kurz MUC) Befehle.
+
+/room join [room [nick [pass]]]
+ Betrete den Raum "room" mit dem Nickname "nick". Wenn kein Nickname angegeben wurde, wird die "nickname" Option aus der Konfigurationsdatei benutzt. Das optionale Passwort kann für geschützte Chaträume angegeben werden. Verwende Anführungszeichen, wenn dein Nickname Leerzeichen enthält!
+/room leave [message]
+ Verlässt den aktuellen Chatraum
+/room names [--detail|--short|--quiet|--compact]
+ Zeigt die Teilnehmer des aktuellen Chatraumes an
+/room nick newnick
+ Setzt deinen Nickname auf "newnick"
+/room privmsg nick msg
+ Schickt die private Nachricht "msg" an "nick"
+/room remove
+ Löscht diesen Raum vom Roster, sofern du ihn davor verlassen hast
+/room topic -|newtopic
+ Setzt das Thema auf "newtopic"
+ (mit "-" wird das Thema gelöscht)
+/room unlock
+ Entfernt das Passwort bei einem geschütztem Raum(wenn du der Besitzer bist)
+/room destroy [reason]
+ Zerstört den Raum (vorsichtig damit umgehen ;))
+/room whois nick
+ Zeigt Infos über "nick" bzgl. des MUC an
+/room ban jid [grund]
+ Verbannt die JID mit einem (optionalem) Grund
+/room unban jid
+ Entbanne die JID für den aktiven Raum
+/room invite jid [grund]
+ Lädt die jid [mit einem Grund] in den gerade aktiven MUC ein
+/room kick nick [grund]
+ Wirft den User "nick" aus dem Raum
+/room role jid rolle [grund]
+ Ändert die Rolle der jid (rolle kann "none", "visitor", "participant" oder "moderator" sein)
+/room affil jid zugeh [grund]
+ Ändert die Zugehörigkeit der jid zum Raum. (zugeh kann "none", "member", "admin" oder "owner" sein)
+/room setopt print_status|auto_whois|flag_joins [wert]
+ Ändert die Einstellungen für den aktuellen MUC.
+ Für "print_status" sind folgende Werte möglich: "default", "none", "in_and_out", "all".
+ Bei "auto_whois" sind die Werte "default", "off" und "on" gültig.
+ Für "flag_joins" sind folgende Werte möglich: "default", "none", "joins", "all".
+ Wenn man die Einstellungen auf "default" setzt, so werden die Optionen muc_print_status / muc_auto_whois / muc_flag_joins benutzt.
+/room bookmark [add|del] [-autojoin|+autojoin] [-|nick]
+ Zum Hinzufügen, Löschen und Ändern von Raum-Bookmarks.
+ Wenn autojoin gesetzt ist, wird mcabber nach dem verbinden zum Server diesen MUC automatisch betreten.
+ Um die Liste der Bookmarks zu sehen, benutze "/room bookmark", bei ausgewähltem Status Buffer.

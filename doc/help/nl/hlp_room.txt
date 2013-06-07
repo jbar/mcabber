@@ -1,0 +1,51 @@
+
+ /ROOM join|leave|names|nick|remove|topic|unlock|destroy
+ /ROOM privmsg|invite|whois|kick|ban|unban|role|affil
+ /ROOM setopt print_status|auto_whois|flag_joins [waarde]
+ /ROOM bookmark [add|del] [-autojoin|+autojoin] [-|nick]
+
+Het 'room' commando verzorgt de Multi-User Chat (MUC) room acties.
+
+/room join [ruimte [nick [wachtwoord]]]
+ Betreed chatroom "ruimte", met "nick" als je nickname.  Indien geen nickname wordt aangegeven (of als dat een lege string is: ""), wordt de waarde voor de "nickname" configuratie-optie gebruikt (zie het voorbeeld configuratie bestand).  Indien de actieve selectie door mcabber correct als een chatroom wordt herkend, kan de verkorte schrijfwijze "." worden gebruikt in plaats van de volledige naam van de chatroom.  Een wachtwoord kan worden meegegeven voor beschermde chatrooms.  Plaats aanhalingstekens om je nickname indien die spaties bevat.
+/room leave [bericht]
+ Verlaat de huidige chatroom, met eventueel achterlaten van "bericht"
+/room names [--detail|--short|--quiet|--compact]
+ Toon de leden van de huidige chatroom
+/room nick nieuwenick
+ Verander je nickname in de huidige chatroom
+/room privmsg nick bericht
+ Verstuur privé bericht "bericht" aan "nick"
+/room remove
+ Verwijdert de huidige chatroom van het roster (je moet deze chatroom tevoren hebben verlaten)
+/room topic -|nieuwonderwerp
+ Stel een nieuw onderwerp in voor de huidige chatroom
+ (Het onderwerp wordt gewist indien '-' wordt gebruikt voor "nieuwonderwerp")
+/room unlock
+ Ontsluit de huidige chatroom (indien je de eigenaar bent)
+/room destroy [reden]
+ Vernietig de huidige chatroom (gebruik dit voorzichtig!)
+/room whois nick
+ Toon MUC informatie over "nick"
+/room ban jid [reden]
+ Verban jid uit de huidige chatroom
+/room unban jid
+ Verwijder de ban van jid in de huidige chatroom
+/room invite jid [reden]
+ Nodig jid uit in de huidige chatroom
+/room kick nick [reden]
+ Schop "nick" uit de huidige chatroom
+/room role jid role [reden]
+ Verander jid's rol (rol kan zijn: "none", "visitor", "participant", "moderator")
+/room affil jid affil [reden]
+ Verander jid's verbintenis (affil kan zijn: "none", "member", "admin", "owner")
+/room setopt print_status|auto_whois|flag_joins [waarde]
+ Verander instellingen voor de huidige chatroom
+ Voor print_status zijn de mogelijke waarden "default", "none", "in_and_out", "all".
+ Voor auto_whois zijn de mogelijke waarden "default", "off", "on".
+ Voor flag_joins zijn de mogelijke waarden "default", "none", "joins", "all".
+ Indien de waarde gelijk is aan "default" worden de waarden gebruikt van de opties muc_print_status, muc_auto_whois en muc_flag_joins.
+/room bookmark [add|del] [-autojoin|+autojoin] [-|nick]
+ Toevoegen, verwijderen of aanpassen van een bookmark (standaard is toevoegen).
+ Indien 'autojoin' actief is, zal mcabber automatisch de MUC chatroom betreden wanner het verbinding met de server heeft gemaakt.
+ Om de list met bookmarks te zien, kan het commando `/room bookmark` in de status buffer worden gebruikt.

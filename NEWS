@@ -1,0 +1,98 @@
+mcabber (0.10.2)
+
+ * The FIFO and url_regex systems have been modularized.
+   Load the appropriate modules if you want these features
+   (the sample configuration file has been updated).
+
+ -- Mikael, 2012-07-28
+
+mcabber (0.10.0)
+
+ * MCabber now uses the Loudmouth library (version 1.4.3 or greater).
+ * The JID should be provided in the configuration file, the variable
+   'username' has been replaced with 'jid'.
+ * The SSL/TLS-related options have changed; please check the new
+   sample configuration file.
+ * The UNREAD events now passes more data to the external script
+   (including the number of buffers with the attention sign,
+   the number of unread MUC buffers, and the number of unread MUC
+   buffers with the attention sign).
+
+ -- Mikael, 2010-04-11
+
+mcabber (0.9.10)
+
+ * The spell checking related options have changed, please
+   check your configuration file.
+
+ -- Mikael, 2009-10-11
+
+mcabber (0.9.5)
+
+ * The option 'otr' must now be set in the configuration file in
+   order to be able to use the OTR (Off-The-Record messaging)
+   support.
+
+ -- Mikael, 2007-11-19
+
+mcabber (0.9.4)
+
+ * The option 'hide_offline_buddies' is deprecated, the new option
+   roster_display_filter should be used instead.
+
+ -- Mikael, 2007-10-27
+
+mcabber (0.9.1)
+
+ * The Ctrl-q binding is not hardcoded anymore and should be set in the
+   configuration file.
+
+ -- Mikael, 2007-02-10
+
+mcabber (0.8.0)
+
+ * Mcabber now does SSL server certificate verification, and it is enabled
+   by default.  You can disable the certificate verification with the
+   'ssl_verify' option.  See the sample configuration file for details.
+
+ -- Mikael, 2006-08-13
+
+mcabber (0.7.5)
+
+ * History log files are now stored using UTF-8 format.
+   If you have enabled history logging, you need to convert your existing
+   logfiles.  For example, you can use the following command to convert
+   all ISO-8859-15 files in directory $histodir to UTF-8:
+   $ recode iso-8859-15..utf-8 $histodir/*
+   (There are other tools: convmv, utrac...)
+ * The names of the color options have changed, please check your
+   configuration file if you have customized your colors.
+   The sample config. file has been updated.
+
+ -- Mikael, 2006-04-03
+
+mcabber (0.6.5)
+
+ * The "debug" option has been replaced with the tracelog_level and
+   tracelog_file options.  The sample config. file has been updated,
+   so you should have a look at it if you want to use advanced logging.
+
+ -- Mikael, 2005-07-25
+
+mcabber (0.6.4)
+
+ * The configuration file format has changed.  Options need to be set using
+   the "set" keywords.  The sample config. file has been updated.
+
+ -- Mikael, 2005-07-18
+
+mcabber (0.6.2)
+
+ * Support for old style (i.e. < 0.6.1) history logfiles has been removed.
+   You can upgrade your logfiles with the script "contrib/conv_log_dates.pl"
+   if you haven't already done it.
+ * The colors option names have changed (and they aren't mandatory anymore).
+   Please look at the sample config. file to update your mcabberrc.
+
+ -- Mikael, 2005-07-11
+

@@ -1,0 +1,51 @@
+
+ /ROOM join|leave|names|nick|remove|topic|unlock|destroy
+ /ROOM privmsg|invite|whois|kick|ban|unban|role|affil
+ /ROOM setopt print_status|auto_whois|flag_joins [valeur]
+ /ROOM bookmark [add|del] [-autojoin|+autojoin] [-|nick]
+
+Cette commande permet de gérer les salons de discussions MUC (Multi-User Chat).
+
+/room join [room [pseudo [pass]]]
+ Joint le salon "room", en utilisant le pseudonyme "pseudo". Si le pseudo n'est pas spécifié (ou si c'est une chaîne vide), la valeur de l'option "nickname" est utilisée (cf. exemple de fichier de configuration). Si l'élément de la liste de contacts actuellement sélectionné est considéré comme un salon par mcabber, le raccourci "." peut être utilisé au lieu de l'identifiant complet du salon. Un mot de passe optionnel "pass" peut être fourni. Si votre pseudonyme contient des espaces, utilisez des guillemets.
+/room leave [message]
+ Quitte le salon sélectionné
+/room names [--detail|--short|--quiet|--compact]
+ Affiche les membres du salon
+/room nick nouveau_pseudo
+ Change votre pseudonyme dans le salon
+/room privmsg pseudo msg
+ Envoie un message privé "msg" au membre "pseudo"
+/room remove
+ Supprime le salon sélectionné du roster (il faut avoir quitté ce salon d'abord)
+/room topic nouveau_sujet
+ Change le sujet du salon de discussion
+ (Si nouveau_sujet est «-», le sujet est effacé)
+/room unlock
+ Déverrouille le salon sélectionné (si vous en êtes le propriétaire)
+/room destroy [raison]
+ Détruit le salon sélectionné (faites attention !)
+/room whois pseudo
+ Affiche les informations MUC sur "pseudo"
+/room ban jid [raison]
+ Bannit l'utilisateur jid du salon
+/room unban jid
+ Supprime le ban sur l'utilisateur jid dans le salon
+/room invite jid [raison]
+ Invite l'utilisateur jid dans le salon
+/room kick pseudo [raison]
+ Chasse le membre "pseudo" du salon
+/room role jid role [raison]
+ Change le rôle de jid (role peut être "none", "visitor", "participant", "moderator")
+/room affil jid affil [raison]
+ Change l'affiliation de jid (affil peut être "none", "member", "admin", "owner")
+/room setopt print_status|auto_whois|flag_joins [valeur]
+ Change certains paramètres du salon sélectionné
+ Pour print_status, les valeurs possibles sont "default", "none", "in_and_out", "all".
+ Pour auto_whois, les valeurs possibles sont "default", "off", "on".
+ Pour flag_joins, les valeurs possibles sont "default", "none", "joins", "all".
+ Si la valeur est "default", la configuration utilisée sera celle des options muc_print_status, muc_auto_whois et muc_flag_joins.
+/room bookmark [add|del] [-autojoin|+autojoin] [-|nick]
+ Ajoute, supprime ou met à jour le signet (par défaut, ajoute).
+ Si "autojoin" est activé, mcabber entrera automatiquement dans la salle de conférence après s'être connecté au serveur.
+ Pour visualiser la liste des signets, tapez /room bookmark dans la fenêtre d'état (status).
