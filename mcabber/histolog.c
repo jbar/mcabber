@@ -177,6 +177,7 @@ static void write_histo_line(const char *bjid,
     return;
   }
 
+  to_iso8601(str_ts, ts);
   err = fprintf(fp, "%c%c %-18.18s %03d %s\n", type, info, str_ts, len, data);
   fclose(fp);
   if (err < 0) {
